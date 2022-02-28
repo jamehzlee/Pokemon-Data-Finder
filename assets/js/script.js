@@ -1,4 +1,4 @@
-fetch("https://api.opendota.com/api/matches/271145478")
+fetch("https://store.steampowered.com/api/appdetails?appids=440")
 .then(headers => headers.json())
 .then(response => {
     console.log(response)
