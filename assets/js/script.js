@@ -1,15 +1,25 @@
-fetch("https://pokeapi.co/api/v2/")
-.then(headers => headers.json())
-.then(response => {
-    console.log(response)
-})
+let searchInput = document.querySelector("#search-text");
+let button = document.querySelector(".button")
 
-// elden%20ring%20trailer
+function getData() {
+    let search = searchInput.value;
+    console.log(search)
+    fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
+    .then(headers => headers.json())
+    .then(response => {
+        console.log(response)
+        // let currentPokemon = response.results[0].name
+        // console.log(currentPokemon)
+    });
+}
 
-let search = "GTA V trailer"
-search.replace(/\s/g, "")
 function getVideo(){
-    let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAlM-fUBenyXh7wZecnf-yQYNTOi8mrHNM"
+    let search = searchInput.value;
+    console.log(search);
+    // update search variable to be value of search box
+    search.trim()
+    search.replace(/\s/g, "")
+    let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
     fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -17,4 +27,10 @@ function getVideo(){
         console.log(singleVideoID)
     })
 }
-getVideo();
+
+function run() {
+    getData();
+    // getVideo();
+}
+
+button.addEventListener("click", run)
