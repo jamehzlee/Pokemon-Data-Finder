@@ -1,10 +1,11 @@
-fetch("https://pokeapi.co/api/v2/")
+fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
 .then(headers => headers.json())
 .then(response => {
     console.log(response)
+    let currentPokemon = response.results[0].name
+    console.log(currentPokemon)
 })
 
-// elden%20ring%20trailer
 
 let search = "GTA V trailer"
 search.replace(/\s/g, "")
@@ -17,4 +18,3 @@ function getVideo(){
         console.log(singleVideoID)
     })
 }
-getVideo();
