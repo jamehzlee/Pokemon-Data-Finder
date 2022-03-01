@@ -1,24 +1,10 @@
-// fetch("https://store.steampowered.com/api/appdetails?appids=440")
-// .then(headers => headers.json())
-// .then(response => {
-//     console.log(response)
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
+fetch("https://pokeapi.co/api/v2/")
+.then(headers => headers.json())
+.then(response => {
+    console.log(response)
+})
 
 // elden%20ring%20trailer
-
 
 let search = "GTA V trailer"
 search.replace(/\s/g, "")
