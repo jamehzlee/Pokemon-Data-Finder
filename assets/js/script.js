@@ -6,7 +6,7 @@ fetch("https://pokeapi.co/api/v2/")
 
 // elden%20ring%20trailer
 
-let search = "GTA V trailer"
+let search = ""
 search.replace(/\s/g, "")
 function getVideo(){
     let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAlM-fUBenyXh7wZecnf-yQYNTOi8mrHNM"
