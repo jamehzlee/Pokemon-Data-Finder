@@ -1,4 +1,4 @@
-fetch("https://store.steampowered.com/api/appdetails?appids=440")
+fetch("https://pokeapi.co/api/v2/")
 .then(headers => headers.json())
 .then(response => {
     console.log(response)
