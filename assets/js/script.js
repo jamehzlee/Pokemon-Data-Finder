@@ -4,7 +4,7 @@ fetch("https://pokeapi.co/api/v2/")
     console.log(response)
 })
 
-// elden%20ring%20trailer
+
 
 let search = "GTA V trailer"
 search.replace(/\s/g, "")
@@ -17,4 +17,4 @@ function getVideo(){
         console.log(singleVideoID)
     })
 }
-getVideo();
+// getVideo();
