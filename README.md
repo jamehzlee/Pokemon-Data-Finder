@@ -1,1 +1,1 @@
-git<h1><a href="https://jamehzlee.github.io/Project-1-Group-2/">Group Project<a></h1>
+<h1><a href="https://jamehzlee.github.io/Project-1-Group-2/">Group Project<a></h1>
