@@ -1,17 +1,19 @@
 let searchInput = document.querySelector("#search-text");
 let button = document.querySelector(".button")
 
-
-fetch("https://pokeapi.co/api/v2/pokemon/")
-.then(headers => headers.json())
-.then(response => {
-    console.log(response)
-    let currentPokemon = response.results[0].name
-    console.log(currentPokemon)
-});
+function getData() {
+    let search = searchInput.value;
+    console.log(search)
+    fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
+    .then(headers => headers.json())
+    .then(response => {
+        console.log(response)
+        // let currentPokemon = response.results[0].name
+        // console.log(currentPokemon)
+    });
+}
 
 function getVideo(){
-    // get value of search box
     let search = searchInput.value;
     console.log(search);
     // update search variable to be value of search box
@@ -25,3 +27,10 @@ function getVideo(){
         console.log(singleVideoID)
     })
 }
+
+function run() {
+    getData();
+    // getVideo();
+}
+
+button.addEventListener("click", run)
