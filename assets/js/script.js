@@ -1,12 +1,13 @@
 let searchInput = document.querySelector("#search-text");
 let button = document.querySelector(".button")
 
-
-fetch("https://pokeapi.co/api/v2/pokemon/")
+fetch("https://pokeapi.co/api/v2/pokemon/?limit=1000")
 .then(headers => headers.json())
 .then(response => {
     console.log(response)
-});
+  let currentPokemon = response.results[0].name
+    console.log(currentPokemon)
+})
 
 function getVideo(){
     // get value of search box
