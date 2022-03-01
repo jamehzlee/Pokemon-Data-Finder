@@ -17,7 +17,7 @@ function getVideo(){
     // update search variable to be value of search box
     search.trim()
     search.replace(/\s/g, "")
-    let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAlM-fUBenyXh7wZecnf-yQYNTOi8mrHNM"
+    let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
     fetch(url)
     .then(response => response.json())
     .then(data => {
