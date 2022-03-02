@@ -1,9 +1,8 @@
 let searchInput = document.querySelector("#search-text");
 let button = document.querySelector(".button")
 
-function getData() {
-    let search = searchInput.value;
-    console.log(search)
+
+function getData(search) {
     fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
     .then(headers => headers.json())
     .then(response => {
@@ -31,12 +30,7 @@ function getData() {
     });
 }
 
-function getVideo(){
-    let search = searchInput.value;
-    console.log(search);
-    // update search variable to be value of search box
-    search.trim()
-    search.replace(/\s/g, "")
+function getVideo(search){
     let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
     fetch(url)
     .then(response => response.json())
@@ -47,7 +41,12 @@ function getVideo(){
 }
 
 function run() {
-    getData();
+    let search = searchInput.value;
+    search = search.toLowerCase().trim();
+    search.replace(/\s/g, "")
+    console.log(search)
+    
+    getData(search);
     // getVideo();
 }
 
