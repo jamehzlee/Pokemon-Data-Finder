@@ -1,21 +1,30 @@
 let searchInput = document.querySelector("#search-text");
 let button = document.querySelector(".button")
-
+let pokemonName = document.querySelector("#name")
+let type = document.querySelector("#type")
+let ability1 = document.querySelector("#ability1")
+let ability2 = document.querySelector("#ability2")
+let move1 = document.querySelector("#move1")
+let move2 = document.querySelector("#move2")
+let move3 = document.querySelector("#move3")
+let move4 = document.querySelector("#move4")
+let height = document.querySelector("#height")
+let weight = document.querySelector("#weight")
 
 function getData(search) {
     fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
     .then(headers => headers.json())
     .then(response => {
-        let name = response.name
-        let type = response.types[0].type.name
-        let ability1 = response.abilities[0].ability.name
-        let ability2 = response.abilities[1].ability.name
-        let move1 = response.moves[0].move.name
-        let move2 = response.moves[1].move.name
-        let move3 = response.moves[2].move.name
-        let move4 = response.moves[3].move.name
-        let stats = response.stats[0].base_stat
-        let weight = response.weight 
+        pokemonName = response.name
+        type = response.types[0].type.name
+        ability1 = response.abilities[0].ability.name
+        ability2 = response.abilities[1].ability.name
+        move1 = response.moves[0].move.name
+        move2 = response.moves[1].move.name
+        move3 = response.moves[2].move.name
+        move4 = response.moves[3].move.name
+        stats = response.stats[0].base_stat
+        weight = response.weight 
     });
 }
 
@@ -49,9 +58,9 @@ function run() {
     let search = searchInput.value;
     search = search.toLowerCase().trim();
     search.replace(/\s/g, "")
-    console.log(search)
     userHistory(search);
-    // getData(search);
+    getData(search);
+    console.log(search)
     // getVideo();
 }
 
