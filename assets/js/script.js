@@ -49,6 +49,7 @@ function getVideo(){
     })
 }
 
+
 function run() {
     let search = searchInput.value;
     search = search.toLowerCase().trim();
