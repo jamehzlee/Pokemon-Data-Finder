@@ -24,9 +24,14 @@ function getData(search) {
         move3 = response.moves[2].move.name
         move4 = response.moves[3].move.name
         stats = response.stats[0].base_stat
+        height = response.height
         weight = response.weight 
+
+        pokemonName = document.querySelector("name").innerText = pokemonName.charAt(0).toUpperCase()+pokemonName.releasePointerCapture(1);
     });
 }
+
+
 
 function getVideo(){
     let search = searchInput.value;
