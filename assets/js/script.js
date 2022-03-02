@@ -48,14 +48,20 @@ function getVideo(){
 
     })
 }
-
+let searchArray = [];
+function userHistory(search){
+    searchArray.push(search);
+    localStorage.setItem("searches", JSON.stringify(searchArray));
+    let history = localStorage.getItem("searches");
+    console.log(history);
+}
 function run() {
     let search = searchInput.value;
     search = search.toLowerCase().trim();
     search.replace(/\s/g, "")
     console.log(search)
-    
-    getData(search);
+    userHistory(search);
+    // getData(search);
     // getVideo();
 }
 
