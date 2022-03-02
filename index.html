@@ -1,35 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <title>Document</title>
-</head>
-<body>
-    <h1 class="title has-text-centered">Pokemon Data Finder</h1>
-    <h2 class="subtitle has-text-centered">Search Youtube for videos and if you want to know more about the Pokemon search the database. </h2>
 
-    <div class="field has-addons column is-half is-offset-one-quarter">
-        <!-- <div class="control align-self-center"> -->
-          <input class="input has-text-centered" type="text" placeholder="Find a Pokemon" id="search-text">
-        <!-- </div> -->
-        <div class="control">
-          <a class="button is-info">
-            Search
-          </a>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <title>Document</title>
+</head>
+
+<body class="bg-dark">
+  <h1 class="title has-text-centered">Pokemon Data Finder</h1>
+  <h2 class="subtitle has-text-centered">Search Youtube for videos and if you want to know more about the Pokemon search
+    the database. </h2>
+
+  <div class="field has-addons column is-half is-offset-one-quarter">
+    <!-- <div class="control align-self-center"> -->
+    <input class="input has-text-centered" type="text" placeholder="Find a Pokemon" id="search-text">
+    <!-- </div> -->
+    <div class="control">
+      <a class="button is-info">
+        Search
+      </a>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-two-thirds">
+      <figure class="image is-16by9">
+        <iframe class="has-ratio" width="600" height="360" src="https://www.youtube.com/embed/1roy4o4tqQM"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </figure>
+    </div>
+
+    <div class="column is-one-third">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Pokemon name
+          </p>
+        </header>
+
+        <div class="card-content">
+          abilities
+        </div>
+        <div class="content">
+          stats
+
         </div>
       </div>
-      <div class = "columns">
-          <div class = "column is-two-thirds">
-            <figure class="image is-16by9">
-                <iframe class="has-ratio" width="600" height="360" src="https://www.youtube.com/embed/tr-f8Y1dpPU" frameborder="0" allowfullscreen></iframe>
-              </figure>
-          </div>
-          <div class = "column is-one-third"></div>
-      </div>
 
-    <script src="./assets/js/script.js"></script>
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec iaculis mauris.
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
