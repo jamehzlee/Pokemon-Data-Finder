@@ -8,8 +8,10 @@ function getData() {
     .then(headers => headers.json())
     .then(response => {
         console.log(response)
-        // let currentPokemon = response.results[0].name
-        // console.log(currentPokemon)
+        let currentPokemon = response.abilities[0].ability.name
+        console.log(currentPokemon)
+        let currentPokemon1 = response.abilities[1].ability.name
+        console.log(currentPokemon1)
     });
 }
 
