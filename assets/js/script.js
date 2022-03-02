@@ -29,14 +29,23 @@ function getData(search) {
         console.log(weight)
     });
 }
-
-function getVideo(search){
-    let url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
-    fetch(url)
+function getVideo(){
+    let search = searchInput.value;
+    console.log(search);
+    // update search variable to be value of search box
+    search.trim()
+    search.replace(/\s/g, "")
+    let videoInfo = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
+    fetch(videoInfo)
     .then(response => response.json())
     .then(data => {
-        let singleVideoID = data.items[1].id.videoId
-        console.log(singleVideoID)
+        let videoId = data.items[0].id.videoId
+        let url = "https://youtube.com/embed/"+videoId
+        let iframe = document.querySelector("iframe")
+        console.log(data)
+        iframe.setAttribute("src", url)
+        console.log(iframe)
+
     })
 }
 let searchArray = [];
