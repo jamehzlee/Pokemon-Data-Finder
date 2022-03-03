@@ -1,4 +1,3 @@
-let searchArray = []
 let searchInput = document.querySelector("#search-text")
 let button = document.querySelector(".button")
 let pokemonName = document.querySelector("#name")
@@ -11,13 +10,13 @@ let move3 = document.querySelector("#move3")
 let move4 = document.querySelector("#move4")
 let pokemonHeight = document.querySelector("#height")
 let pokemonWeight = document.querySelector("#weight")
-let searchHistory = document.querySelector("#searchHistory")
+let localHistoryEl = document.querySelector("#localHistory")
+let searchArray = []
 
 function getData(search) {
     fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
     .then(headers => headers.json())
     .then(response => {
-        console.log(response)
         pokemonName = response.name
         type = response.types[0].type.name
         ability1 = response.abilities[0].ability.name
@@ -36,49 +35,58 @@ function getData(search) {
 }
 
 function displayData() {
-    document.querySelector("#name").innerText = pokemonName.charAt(0).toUpperCase()+pokemonName.slice(1);
-    document.querySelector("#type").innerText = "Type: " + type.charAt(0).toUpperCase()+type.slice(1);
-    document.querySelector("#ability1").innerText = ability1.charAt(0).toUpperCase()+ability1.slice(1);
-    document.querySelector("#ability2").innerText = ability2.charAt(0).toUpperCase()+ability2.slice(1);
-    document.querySelector("#move1").innerText = move1.charAt(0).toUpperCase()+move1.slice(1);
-    document.querySelector("#move2").innerText = move2.charAt(0).toUpperCase()+move2.slice(1);
-    document.querySelector("#move3").innerText = move3.charAt(0).toUpperCase()+move3.slice(1);
-    document.querySelector("#move4").innerText = move4.charAt(0).toUpperCase()+move4.slice(1);
+    document.querySelector("#name").innerText = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
+    document.querySelector("#type").innerText = "Type: " + type.charAt(0).toUpperCase() + type.slice(1);
+    document.querySelector("#ability1").innerText = ability1.charAt(0).toUpperCase() + ability1.slice(1);
+    document.querySelector("#ability2").innerText = ability2.charAt(0).toUpperCase() + ability2.slice(1);
+    document.querySelector("#move1").innerText = move1.charAt(0).toUpperCase() + move1.slice(1);
+    document.querySelector("#move2").innerText = move2.charAt(0).toUpperCase() + move2.slice(1);
+    document.querySelector("#move3").innerText = move3.charAt(0).toUpperCase() + move3.slice(1);
+    document.querySelector("#move4").innerText = move4.charAt(0).toUpperCase() + move4.slice(1);
     document.querySelector("#height").innerText = "Height: " + height;
     document.querySelector("#weight").innerText = "Weight: " + weight;
 }
 
-
-
 function getVideo(){
-    let search = searchInput.value;
-    console.log(search);
-    search.trim()
-    search.replace(/\s/g, "")
     let videoInfo = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"%20facts&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
     fetch(videoInfo)
-    .then(response => response.json())
-    .then(data => {
-        let videoId = data.items[0].id.videoId
-        let url = "https://youtube.com/embed/"+videoId
-        let iframe = document.querySelector("iframe")
-        console.log(data)
-        iframe.setAttribute("src", url)
-        console.log(iframe)
-
-    })
+        .then(response => response.json())
+        .then(data => {
+            let videoId = data.items[0].id.videoId
+            let url = "https://youtube.com/embed/" + videoId
+            let iframe = document.querySelector("iframe")
+            console.log(data)
+            iframe.setAttribute("src", url)
+            console.log(iframe)
+        })
 }
 
-function userHistory(search){
-    searchArray.push(search);
-    localStorage.setItem("searches", (searchArray));
-    let localHistory = localStorage.getItem("searches");
-    searchHistory.innerText = localHistory;
+function userHistory(search) {
+    searchArray.push(search)
+    localStorage.setItem("localHistory", JSON.stringify(searchArray))
     
-    console.log(localHistory);
 }
 
+function arrayToHistory(search) {
+    localHistoryEl.innerHTML = ""
+    let test = JSON.parse(localStorage.getItem("localHistory"))
+    let recentArray = test.reverse()
 
+    for (let i = 0; i < 5; i++) {
+        let recentEl = document.createElement("p")
+        recentEl.setAttribute("class", "column")
+        recentEl.textContent = recentArray[i]
+        // recentEl.addEventListener("click", getData(recentArray[i]))
+        localHistoryEl.append(recentEl)
+    }
+}
+
+document.querySelector(".moves-list").style.display = "none"
+document.querySelector(".ability-list").style.display = "none"
+function showdata() {
+    document.querySelector(".moves-list").style.display = "block"
+    document.querySelector(".ability-list").style.display = "block"
+}
 
 function run() {
     let search = searchInput.value;
@@ -86,8 +94,9 @@ function run() {
     search.replace(/\s/g, "")
     userHistory(search);
     getData(search);
-    console.log(search)
+    arrayToHistory(search)
     // getVideo();
 }
 
 button.addEventListener("click", run)
+
