@@ -1,4 +1,3 @@
-let searchArray = []
 let searchInput = document.querySelector("#search-text")
 let button = document.querySelector(".button")
 let pokemonName = document.querySelector("#name")
@@ -11,28 +10,28 @@ let move3 = document.querySelector("#move3")
 let move4 = document.querySelector("#move4")
 let pokemonHeight = document.querySelector("#height")
 let pokemonWeight = document.querySelector("#weight")
-let searchHistory = document.querySelector("#searchHistory")
+let localHistoryEl = document.querySelector("#localHistory")
+let searchArray = []
 
 function getData(search) {
-    fetch("https://pokeapi.co/api/v2/pokemon/" + search + "/")
-        .then(headers => headers.json())
-        .then(response => {
-            console.log(response)
-            pokemonName = response.name
-            type = response.types[0].type.name
-            ability1 = response.abilities[0].ability.name
-            ability2 = response.abilities[1].ability.name
-            move1 = response.moves[0].move.name
-            move2 = response.moves[1].move.name
-            move3 = response.moves[2].move.name
-            move4 = response.moves[3].move.name
-            stats = response.stats[0].base_stat
-            weight = response.weight.toFixed(2) / 10 + " kilograms"
-            height = response.height.toFixed(2) / 10 + " meters"
-            pokemonWeight = JSON.stringify(weight)
-            pokemonHeight = JSON.stringify(height)
-            displayData()
-        })
+    fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
+    .then(headers => headers.json())
+    .then(response => {
+        pokemonName = response.name
+        type = response.types[0].type.name
+        ability1 = response.abilities[0].ability.name
+        ability2 = response.abilities[1].ability.name
+        move1 = response.moves[0].move.name
+        move2 = response.moves[1].move.name
+        move3 = response.moves[2].move.name
+        move4 = response.moves[3].move.name
+        stats = response.stats[0].base_stat
+        weight = response.weight .toFixed(2)/10 + " kilograms"
+        height = response.height .toFixed(2)/10 + " meters"
+        pokemonWeight = JSON.stringify(weight)
+        pokemonHeight = JSON.stringify(height)
+        displayData()
+    })
 }
 
 function displayData() {
@@ -48,14 +47,8 @@ function displayData() {
     document.querySelector("#weight").innerText = "Weight: " + weight;
 }
 
-
-
-function getVideo() {
-    let search = searchInput.value;
-    console.log(search);
-    search.trim()
-    search.replace(/\s/g, "")
-    let videoInfo = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + search + "%20facts&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
+function getVideo(){
+    let videoInfo = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"%20facts&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
     fetch(videoInfo)
         .then(response => response.json())
         .then(data => {
@@ -65,17 +58,27 @@ function getVideo() {
             console.log(data)
             iframe.setAttribute("src", url)
             console.log(iframe)
-
         })
 }
 
 function userHistory(search) {
-    searchArray.push(search);
-    localStorage.setItem("searches", (searchArray));
-    let localHistory = localStorage.getItem("searches");
-    searchHistory.innerText = localHistory;
+    searchArray.push(search)
+    localStorage.setItem("localHistory", JSON.stringify(searchArray))
+    
+}
 
-    console.log(localHistory);
+function arrayToHistory(search) {
+    localHistoryEl.innerHTML = ""
+    let test = JSON.parse(localStorage.getItem("localHistory"))
+    let recentArray = test.reverse()
+
+    for (let i = 0; i < 5; i++) {
+        let recentEl = document.createElement("p")
+        recentEl.setAttribute("class", "column")
+        recentEl.textContent = recentArray[i]
+        // recentEl.addEventListener("click", getData(recentArray[i]))
+        localHistoryEl.append(recentEl)
+    }
 }
 
 document.querySelector(".moves-list").style.display = "none"
@@ -91,9 +94,8 @@ function run() {
     search.replace(/\s/g, "")
     userHistory(search);
     getData(search);
-    console.log(search)
-    // getVideo(search);
-    showdata();
+    arrayToHistory(search)
+    // getVideo();
 }
 
 button.addEventListener("click", run)
