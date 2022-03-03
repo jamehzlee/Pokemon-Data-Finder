@@ -1,0 +1,23 @@
+html{
+    background-size: cover;
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Neue', cursive;
+    height: 100vh;
+}
+h1, h2{
+    font-family: 'Poppins', sans-serif;
+}
+
+.type, 
+.abilities, 
+.ability-list, 
+.moves,
+.moves-list,
+.height-weight
+{
+    box-shadow: 4px 4px 4px #AABCCB  ;
+}

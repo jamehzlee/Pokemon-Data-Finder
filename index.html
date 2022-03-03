@@ -5,16 +5,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>Document</title>
 </head>
 
-<body class="bg-dark">
-  <h1 class="title has-text-centered">Pokemon Data Finder</h1>
-  <h2 class="subtitle has-text-centered">Search Youtube for videos and if you want to know more about the Pokemon search
+<body class="has-background-grey-lighter">
+  <h1 class="title has-text-centered pt-3">Pokemon Data Finder</h1>
+  <h2 class="subtitle has-text-centered mt-1 mb-1">Search Youtube for videos and if you want to know more about the
+    Pokemon search
     the database. </h2>
 
-  <div class="field is-centered is-half has-addons column is-offset-one-quarter ">
+  <div class="field is-centered is-half has-addons column is-offset-one-quarter mb-1 p-1">
     <input class="input has-text-centered" type="text" placeholder="Find a Pokemon" id="search-text">
     <div class="control">
       <a class="button is-info">
@@ -22,9 +30,8 @@
       </a>
     </div>
   </div>
-  <div class="column has-text-centered">
-    Search History
-    <div id="searchHistory"></div>
+  <div class="column has-text-centered p-1">
+    <div id="searchHistory" class=""></div>
   </div>
 
   <div class="columns">
@@ -33,44 +40,45 @@
         <iframe class="has-ratio" width="640" height="360" frameborder="0" allowfullscreen></iframe>
       </figure>
     </div>
-    <div class="column has-text-centered">
+    <div class="column has-text-centered data-card">
 
-      <div class="card">
+      <div class="card column mr-3 has-background-grey-light">
         <header class="card-header columns">
-          <p id="name" class="card-header-title column">Pokemon name</p>
+          <p id="name" class="card-header-title column is-size-3 has-background-white-ter">Pokemon name</p>
         </header>
 
         <div class="column">
-          <div id="type" class="column content">Type: </div>
+          <div id="type" class="column content is-size-3 mb-0 box has-background-white-bis has-text-black type">Type:
+          </div>
 
-          <div class="column content">  
-            <p class="column">Abilities</p>
-            <div class="columns">
-              <p id="ability1" class="column">shock</p>
-              <p id="ability2" class="column">stun</p>
+          <div class="column content is-size-3 mb-1">
+            <p class="column mb-2 box has-background-grey-dark has-text-white abilities ">Abilities:</p>
+            <div class="columns box p-0 mt-1 has-background-white-ter ability-list mb-1">
+              <p id="ability1" class="column is-size-4 p-0"></p>
+              <p id="ability2" class="column is-size-4 p-0"></p>
             </div>
           </div>
 
           <div class="content">
             <div class="columns">
-              <p class="column">Moves</p>
+              <p class="column is-size-3 box has-background-grey-dark has-text-white moves mb-1">Moves:</p>
             </div>
 
-            <div class="column">
+            <div class="column box has-background-white-ter moves-list">
               <div class="columns">
-                <p id="move1" class="column">move1</p>
-                <p id="move2" class="column">move2</p>
+                <p id="move1" class="column is-size-4"></p>
+                <p id="move2" class="column is-size-4"></p>
               </div>
 
               <div class="columns">
-                <p id="move3" class="column">move3</p>
-                <p id="move4" class="column">move4</p>
+                <p id="move3" class="column is-size-4"></p>
+                <p id="move4" class="column is-size-4"></p>
               </div>
             </div>
 
-            <div class="columns">
-              <p id="height" class="column">Height: </p>
-              <p id="weight" class="column">Weight: </p>
+            <div class="columns box has-background-grey-dark has-text-white p-1 mt-1 height-weight">
+              <p id="height" class="column mb-1 is-size-5">Height: </p>
+              <p id="weight" class="column is-size-5">Weight: </p>
             </div>
 
           </div>
@@ -79,7 +87,7 @@
 
     </div>
   </div>
-  
+
   <script src="./assets/js/script.js"></script>
 </body>
 
