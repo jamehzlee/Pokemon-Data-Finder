@@ -11,6 +11,7 @@ let move3 = document.querySelector("#move3")
 let move4 = document.querySelector("#move4")
 let pokemonHeight = document.querySelector("#height")
 let pokemonWeight = document.querySelector("#weight")
+let searchHistory = document.querySelector("#searchHistory")
 
 function getData(search) {
     fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
@@ -26,8 +27,8 @@ function getData(search) {
         move3 = response.moves[2].move.name
         move4 = response.moves[3].move.name
         stats = response.stats[0].base_stat
-        weight = response.weight
-        height = response.height
+        weight = response.weight .toFixed(2)/10 + " kilograms"
+        height = response.height .toFixed(2)/10 + " meters"
         pokemonWeight = JSON.stringify(weight)
         pokemonHeight = JSON.stringify(height)
         displayData()
@@ -35,17 +36,19 @@ function getData(search) {
 }
 
 function displayData() {
-    document.querySelector("#name").innerText = pokemonName
-    document.querySelector("#type").innerText = "Type: " + type
-    document.querySelector("#ability1").innerText = ability1
-    document.querySelector("#ability2").innerText = ability2
-    document.querySelector("#move1").innerText = move1
-    document.querySelector("#move2").innerText = move2
-    document.querySelector("#move3").innerText = move3
-    document.querySelector("#move4").innerText = move4
-    document.querySelector("#height").innerText = "Height: " + height
-    document.querySelector("#weight").innerText = "Weight: " + weight
+    document.querySelector("#name").innerText = pokemonName.charAt(0).toUpperCase()+pokemonName.slice(1);
+    document.querySelector("#type").innerText = "Type: " + type.charAt(0).toUpperCase()+type.slice(1);
+    document.querySelector("#ability1").innerText = ability1.charAt(0).toUpperCase()+ability1.slice(1);
+    document.querySelector("#ability2").innerText = ability2.charAt(0).toUpperCase()+ability2.slice(1);
+    document.querySelector("#move1").innerText = move1.charAt(0).toUpperCase()+move1.slice(1);
+    document.querySelector("#move2").innerText = move2.charAt(0).toUpperCase()+move2.slice(1);
+    document.querySelector("#move3").innerText = move3.charAt(0).toUpperCase()+move3.slice(1);
+    document.querySelector("#move4").innerText = move4.charAt(0).toUpperCase()+move4.slice(1);
+    document.querySelector("#height").innerText = "Height: " + height;
+    document.querySelector("#weight").innerText = "Weight: " + weight;
 }
+
+
 
 function getVideo(){
     let search = searchInput.value;
@@ -68,10 +71,14 @@ function getVideo(){
 
 function userHistory(search){
     searchArray.push(search);
-    localStorage.setItem("searches", JSON.stringify(searchArray));
-    let history = localStorage.getItem("searches");
-    console.log(history);
+    localStorage.setItem("searches", (searchArray));
+    let localHistory = localStorage.getItem("searches");
+    searchHistory.innerText = localHistory;
+    
+    console.log(localHistory);
 }
+
+
 
 function run() {
     let search = searchInput.value;
@@ -80,7 +87,7 @@ function run() {
     userHistory(search);
     getData(search);
     console.log(search)
-    getVideo();
+    // getVideo();
 }
 
 button.addEventListener("click", run)
