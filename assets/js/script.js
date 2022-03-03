@@ -1,4 +1,3 @@
-let searchArray = []
 let searchInput = document.querySelector("#search-text")
 let button = document.querySelector(".button")
 let pokemonName = document.querySelector("#name")
@@ -11,11 +10,12 @@ let move3 = document.querySelector("#move3")
 let move4 = document.querySelector("#move4")
 let pokemonHeight = document.querySelector("#height")
 let pokemonWeight = document.querySelector("#weight")
-let history1 = document.querySelector("#history1")
-let history2 = document.querySelector("#history2")
-let history3 = document.querySelector("#history3")
-let history4 = document.querySelector("#history4")
-let history5 = document.querySelector("#history5")
+let localHistoryEl = document.querySelector("#localHistory")
+let searchArray = []
+// let history2 = document.querySelector("#history2")
+// let history3 = document.querySelector("#history3")
+// let history4 = document.querySelector("#history4")
+// let history5 = document.querySelector("#history5")
 
 function getData(search) {
     fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
@@ -67,28 +67,26 @@ function getVideo(){
 }
 
 function userHistory(search) {
-
-    if(localStorage.getItem("history1") != search) {   
-        localStorage.setItem("history1", (search))
-        history1.innerText = localStorage.getItem("history1")
-    }
-    else if(localStorage.getItem("history2") != search) {   
-        localStorage.setItem("history2", (search))
-        history2.innerText = localStorage.getItem("history2")
-    }
-    else if(localStorage.getItem("history3") != search) {   
-        localStorage.setItem("history3", (search))
-        history3.innerText = localStorage.getItem("history3")
-    }
-    else if(localStorage.getItem("history4") != search) {   
-        localStorage.setItem("history4", (search))
-        history4.innerText = localStorage.getItem("history4")
-    }
-    else if(localStorage.getItem("history5") != search) {   
-        localStorage.setItem("history5", (search))
-        history5.innerText = localStorage.getItem("history5")
-    }        
+    searchArray.push(search)
+    localStorage.setItem("localHistory", JSON.stringify(searchArray))
+    
 }
+
+function arrayToHistory(search) {
+    localHistoryEl.innerHTML = ""
+    let test = JSON.parse(localStorage.getItem("localHistory"))
+    let recentArray = test.reverse()
+
+    for (let i = 0; i < 5; i++) {
+        let recentEl = document.createElement("p")
+        recentEl.setAttribute("class", "column")
+        recentEl.textContent = recentArray[i]
+        // recentEl.addEventListener("click", getData(recentArray[i]))
+        localHistoryEl.append(recentEl)
+    }
+}
+
+
 
 function run() {
     let search = searchInput.value;
@@ -96,6 +94,7 @@ function run() {
     search.replace(/\s/g, "")
     userHistory(search);
     getData(search);
+    arrayToHistory(search)
     // getVideo();
 }
 
