@@ -11,6 +11,7 @@ let move3 = document.querySelector("#move3")
 let move4 = document.querySelector("#move4")
 let pokemonHeight = document.querySelector("#height")
 let pokemonWeight = document.querySelector("#weight")
+let searchHistory = document.querySelector("#searchHistory")
 
 function getData(search) {
     fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
@@ -47,6 +48,8 @@ function displayData() {
     document.querySelector("#weight").innerText = "Weight: " + weight;
 }
 
+
+
 function getVideo(){
     let search = searchInput.value;
     console.log(search);
@@ -68,10 +71,14 @@ function getVideo(){
 
 function userHistory(search){
     searchArray.push(search);
-    localStorage.setItem("searches", JSON.stringify(searchArray));
-    let history = localStorage.getItem("searches");
-    console.log(history);
+    localStorage.setItem("searches", (searchArray));
+    let localHistory = localStorage.getItem("searches");
+    searchHistory.innerText = localHistory;
+    
+    console.log(localHistory);
 }
+
+
 
 function run() {
     let search = searchInput.value;
