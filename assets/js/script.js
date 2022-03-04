@@ -26,25 +26,25 @@ function getData(search) {
         move3 = response.moves[2].move.name
         move4 = response.moves[3].move.name
         stats = response.stats[0].base_stat
-        weight = response.weight .toFixed(2)/10 + " kilograms"
-        height = response.height .toFixed(2)/10 + " meters"
+        weight = response.weight .toFixed(2)/10 + " kgs"
+        height = response.height .toFixed(2)/10 + " m"
         pokemonWeight = JSON.stringify(weight)
         pokemonHeight = JSON.stringify(height)
-        displayData()
+        displayData(search)
     })
 }
 
-function displayData() {
-    document.querySelector("#name").innerText = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
-    document.querySelector("#type").innerText = "Type: " + type.charAt(0).toUpperCase() + type.slice(1);
-    document.querySelector("#ability1").innerText = ability1.charAt(0).toUpperCase() + ability1.slice(1);
-    document.querySelector("#ability2").innerText = ability2.charAt(0).toUpperCase() + ability2.slice(1);
-    document.querySelector("#move1").innerText = move1.charAt(0).toUpperCase() + move1.slice(1);
-    document.querySelector("#move2").innerText = move2.charAt(0).toUpperCase() + move2.slice(1);
-    document.querySelector("#move3").innerText = move3.charAt(0).toUpperCase() + move3.slice(1);
-    document.querySelector("#move4").innerText = move4.charAt(0).toUpperCase() + move4.slice(1);
-    document.querySelector("#height").innerText = "Height: " + height;
-    document.querySelector("#weight").innerText = "Weight: " + weight;
+function displayData(search) {
+    document.querySelector("#name").innerText = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)
+    document.querySelector("#type").innerText = "Type: " + type.charAt(0).toUpperCase() + type.slice(1)
+    document.querySelector("#ability1").innerText = ability1.charAt(0).toUpperCase() + ability1.slice(1)
+    document.querySelector("#ability2").innerText = ability2.charAt(0).toUpperCase() + ability2.slice(1)
+    document.querySelector("#move1").innerText = move1.charAt(0).toUpperCase() + move1.slice(1)
+    document.querySelector("#move2").innerText = move2.charAt(0).toUpperCase() + move2.slice(1)
+    document.querySelector("#move3").innerText = move3.charAt(0).toUpperCase() + move3.slice(1)
+    document.querySelector("#move4").innerText = move4.charAt(0).toUpperCase() + move4.slice(1)
+    document.querySelector("#height").innerText = "Height: " + height
+    document.querySelector("#weight").innerText = "Weight: " + weight
 }
 
 function getVideo(){
@@ -81,21 +81,14 @@ function arrayToHistory(search) {
     }
 }
 
-document.querySelector(".moves-list").style.display = "none"
-document.querySelector(".ability-list").style.display = "none"
-function showdata() {
-    document.querySelector(".moves-list").style.display = "block"
-    document.querySelector(".ability-list").style.display = "block"
-}
-
 function run() {
-    let search = searchInput.value;
-    search = search.toLowerCase().trim();
+    let search = searchInput.value
+    search = search.toLowerCase().trim()
     search.replace(/\s/g, "")
-    userHistory(search);
-    getData(search);
+    userHistory(search)
+    getData(search)
     arrayToHistory(search)
-    // getVideo();
+    // getVideo()
 }
 
 button.addEventListener("click", run)
