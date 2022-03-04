@@ -9,29 +9,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Document</title>
+  <title>Pokemon Data Finder</title>
 </head>
 
 <body class="has-background-grey-lighter">
   <h1 class="title has-text-centered pt-3">Pokemon Data Finder</h1>
-  <h2 class="subtitle has-text-centered mt-1 mb-1">Search Youtube for videos and if you want to know more about the
+  <h2 class="subtitle has-text-centered my-1">Search Youtube for videos and if you want to know more about the
     Pokemon search the database.</h2>
 
   <div class="field is-centered is-half has-addons column is-offset-one-quarter mb-1 p-1">
     <input class="input has-text-centered" type="text" placeholder="Find a Pokemon" id="search-text">
     <div class="control">
-      <a class="button is-info">
-        Search
-      </a>
+      <a class="button is-info">Search</a>
     </div>
   </div>
-  <div>
-
-  </div>
+  
   <div class="columns is-centered has-text-centered">
     <div id="localHistory" class="columns"></div>
   </div>
@@ -42,45 +36,45 @@
         <iframe class="has-ratio" width="640" height="360" frameborder="0" allowfullscreen></iframe>
       </figure>
     </div>
-    <div class="column has-text-centered data-card">
+    <div class="column has-text-centered">
 
-      <div class="card column mr-3 has-background-grey-light">
+      <div class="card column has-background-grey-light mr-3">
 
         <header class="card-header columns">
           <p id="name" class="card-header-title column is-size-3 has-background-white-ter">Pokemon name</p>
         </header>
 
         <div class="column">
-          <div id="type" class="column content is-size-3 mb-0 box has-background-white-bis has-text-black type">Type:
+          <div id="type" class="column content is-size-3 box has-text-black mb-0">Type:
           </div>
 
           <div class="column content is-size-3 mb-1">
-            <p class="column mb-2 box has-background-grey-dark has-text-white abilities ">Abilities:</p>
-            <div class="columns box p-0 mt-1 has-background-white-ter ability-list mb-1">
-              <p id="ability1" class="column is-size-4 p-0"></p>
-              <p id="ability2" class="column is-size-4 p-0"></p>
+            <p class="column box has-background-grey-dark has-text-white mb-2">Abilities:</p>
+            <div class="columns my-2 p-0">
+              <p id="ability1" class="column is-size-4 box custom-boxes-container">ability1</p>
+              <p id="ability2" class="column is-size-4 box custom-boxes-container">ability2</p>
             </div>
-          </div>
+           </div>
 
-          <div class="content">
+          <div>
             <div class="columns">
-              <p class="column is-size-3 box has-background-grey-dark has-text-white moves mb-1">Moves:</p>
+              <p class="column is-size-3 box has-background-grey-dark has-text-white">Moves:</p>
             </div>
 
-            <div class="column box has-background-white-ter moves-list">
+            <div class="column">
               <div class="columns">
-                <p id="move1" class="column is-size-4"></p>
-                <p id="move2" class="column is-size-4"></p>
+                <p id="move1" class="column is-size-4 box custom-boxes-container">move1</p>
+                <p id="move2" class="column is-size-4 box custom-boxes-container">move2</p>
               </div>
 
               <div class="columns">
-                <p id="move3" class="column is-size-4"></p>
-                <p id="move4" class="column is-size-4"></p>
+                <p id="move3" class="column is-size-4 box custom-boxes-container">move3</p>
+                <p id="move4" class="column is-size-4 box custom-boxes-container">move4</p>
               </div>
             </div>
 
-            <div class="columns box has-background-grey-dark has-text-white p-1 mt-1 height-weight">
-              <p id="height" class="column mb-1 is-size-5">Height: </p>
+            <div class="columns box has-background-grey-dark has-text-white p-1">
+              <p id="height" class="column is-size-5">Height: </p>
               <p id="weight" class="column is-size-5">Weight: </p>
             </div>
 
