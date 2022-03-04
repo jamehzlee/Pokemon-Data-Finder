@@ -1,5 +1,5 @@
 let searchInput = document.querySelector("#search-text")
-let button = document.querySelector(".button")
+let button = document.querySelector("button")
 let pokemonName = document.querySelector("#name")
 let type = document.querySelector("#type")
 let ability1 = document.querySelector("#ability1")
@@ -11,6 +11,7 @@ let move4 = document.querySelector("#move4")
 let pokemonHeight = document.querySelector("#height")
 let pokemonWeight = document.querySelector("#weight")
 let localHistoryEl = document.querySelector("#localHistory")
+let searchHistory = document.querySelector("#searchHistory")
 let searchArray = []
 
 function getData(search) {
@@ -47,8 +48,8 @@ function displayData(search) {
     document.querySelector("#weight").innerText = "Weight: " + weight
 }
 
-function getVideo(){
-    let videoInfo = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"%20facts&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
+function getVideo(search){
+    let videoInfo = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q="+search+"%20pokemon%20facts&key=AIzaSyAwNZ2kW0ApwqX9uW-ZJnuNgQkXePsnjCw"
     fetch(videoInfo)
         .then(response => response.json())
         .then(data => {
@@ -74,22 +75,38 @@ function arrayToHistory(search) {
 
     for (let i = 0; i < 5; i++) {
         let recentEl = document.createElement("p")
-        recentEl.setAttribute("class", "column")
+        recentEl.setAttribute("class", "column is-underlined is-size-5")
         recentEl.textContent = recentArray[i]
-        // recentEl.addEventListener("click", getData(recentArray[i]))
         localHistoryEl.append(recentEl)
     }
 }
 
-function run() {
-    let search = searchInput.value
-    search = search.toLowerCase().trim()
-    search.replace(/\s/g, "")
-    userHistory(search)
-    getData(search)
-    arrayToHistory(search)
-    // getVideo()
+function removeSpace(nameSpacing) {
+    nameSpacing = nameSpacing.toLowerCase().trim()
+    nameSpacing.replace(/\s/g, "")
+    return nameSpacing;
 }
 
-button.addEventListener("click", run)
+function run(searchName) {
+    getData(searchName)
+    arrayToHistory(searchName)
+    getVideo(searchName)
+}
 
+localHistoryEl.addEventListener("click", function(event) {
+    console.log(event.target);
+    console.log("history");
+    let pokeNamePTag = event.target
+    let name = removeSpace(pokeNamePTag.textContent)
+
+    run(name)
+})
+
+button.addEventListener("click", function() {
+    let search = searchInput.value
+    console.log("search button click")
+    let name = removeSpace(search)
+
+    userHistory(name)
+    run(name)
+})
