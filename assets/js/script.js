@@ -75,7 +75,7 @@ function arrayToHistory(search) {
 
     for (let i = 0; i < 5; i++) {
         let recentEl = document.createElement("p")
-        recentEl.setAttribute("class", "column is-underlined is-size-5")
+        recentEl.setAttribute("class", "column is-underlined is-size-3")
         recentEl.textContent = recentArray[i]
         localHistoryEl.append(recentEl)
     }
@@ -90,7 +90,7 @@ function removeSpace(nameSpacing) {
 function run(searchName) {
     getData(searchName)
     arrayToHistory(searchName)
-    getVideo(searchName)
+    // getVideo(searchName)
 }
 
 localHistoryEl.addEventListener("click", function(event) {
