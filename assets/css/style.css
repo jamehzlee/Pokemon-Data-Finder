@@ -11,21 +11,3 @@ body{
 h1, h2{
     font-family: 'Poppins', sans-serif;
 }
-/* 
-.type, 
-.abilities, 
-.ability-list, 
-.moves,
-.moves-list,
-.height-weight
-{
-} */
-/* 
-div p {
-    box-shadow: 4px 4px 4px #AABCCB  ;
-
-} */
-
-.custom-boxes-container .box:last-child {
-    margin-bottom: 1.5rem; 
-}
