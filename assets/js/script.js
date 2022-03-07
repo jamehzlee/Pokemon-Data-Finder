@@ -73,7 +73,7 @@ function arrayToHistory(search) {
 
     for (let i = 0; i < 5; i++) {
         let recentEl = document.createElement("p")
-        recentEl.setAttribute("class", "column is-underlined is-size-3")
+        recentEl.setAttribute("class", "column has-text-centered is-underlined is-size-3 p-0")
         recentEl.textContent = recentArray[i]
         localHistoryEl.append(recentEl)
     }
