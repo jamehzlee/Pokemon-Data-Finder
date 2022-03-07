@@ -37,7 +37,7 @@ function getData(search) {
 
 function displayData(search) {
     document.querySelector("#name").innerText = pokemonNameEl.charAt(0).toUpperCase() + pokemonNameEl.slice(1)
-    document.querySelector("#type").innerText = "TypeEl: " + typeEl.charAt(0).toUpperCase() + typeEl.slice(1)
+    document.querySelector("#type").innerText = "Type: " + typeEl.charAt(0).toUpperCase() + typeEl.slice(1)
     document.querySelector("#ability1").innerText = ability1El.charAt(0).toUpperCase() + ability1El.slice(1)
     document.querySelector("#ability2").innerText = ability2El.charAt(0).toUpperCase() + ability2El.slice(1)
     document.querySelector("#move1").innerText = move1El.charAt(0).toUpperCase() + move1El.slice(1)
