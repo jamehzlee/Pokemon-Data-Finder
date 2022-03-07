@@ -56,9 +56,7 @@ function getVideo(search){
             let videoId = data.items[0].id.videoId
             let url = "https://youtube.com/embed/" + videoId
             let iframe = document.querySelector("iframe")
-            console.log(data)
             iframe.setAttribute("src", url)
-            console.log(iframe)
         })
 }
 
@@ -94,8 +92,6 @@ function run(searchName) {
 }
 
 localHistoryEl.addEventListener("click", function(event) {
-    console.log(event.target);
-    console.log("history");
     let pokeNamePTag = event.target
     let name = removeSpace(pokeNamePTag.textContent)
 
