@@ -1,49 +1,49 @@
-let searchInput = document.querySelector("#search-text")
-let button = document.querySelector("button")
-let pokemonName = document.querySelector("#name")
-let type = document.querySelector("#type")
-let ability1 = document.querySelector("#ability1")
-let ability2 = document.querySelector("#ability2")
-let move1 = document.querySelector("#move1")
-let move2 = document.querySelector("#move2")
-let move3 = document.querySelector("#move3")
-let move4 = document.querySelector("#move4")
-let pokemonHeight = document.querySelector("#height")
-let pokemonWeight = document.querySelector("#weight")
+let searchInputEl = document.querySelector("#search-text")
+let buttonEl = document.querySelector("button")
+let pokemonNameEl = document.querySelector("#name")
+let typeEl = document.querySelector("#type")
+let ability1El = document.querySelector("#ability1")
+let ability2El = document.querySelector("#ability2")
+let move1El = document.querySelector("#move1")
+let move2El = document.querySelector("#move2")
+let move3El = document.querySelector("#move3")
+let move4El = document.querySelector("#move4")
+let pokemonHeightEl = document.querySelector("#height")
+let pokemonWeightEl = document.querySelector("#weight")
 let localHistoryEl = document.querySelector("#localHistory")
-let searchHistory = document.querySelector("#searchHistory")
+let searchHistoryEl = document.querySelector("#searchHistory")
 let searchArray = []
 
 function getData(search) {
     fetch("https://pokeapi.co/api/v2/pokemon/"+search+"/")
     .then(headers => headers.json())
     .then(response => {
-        pokemonName = response.name
-        type = response.types[0].type.name
-        ability1 = response.abilities[0].ability.name
-        ability2 = response.abilities[1].ability.name
-        move1 = response.moves[0].move.name
-        move2 = response.moves[1].move.name
-        move3 = response.moves[2].move.name
-        move4 = response.moves[3].move.name
+        pokemonNameEl = response.name
+        typeEl = response.types[0].type.name
+        ability1El = response.abilities[0].ability.name
+        ability2El = response.abilities[1].ability.name
+        move1El = response.moves[0].move.name
+        move2El = response.moves[1].move.name
+        move3El = response.moves[2].move.name
+        move4El = response.moves[3].move.name
         stats = response.stats[0].base_stat
         weight = response.weight .toFixed(2)/10 + " kgs"
         height = response.height .toFixed(2)/10 + " m"
-        pokemonWeight = JSON.stringify(weight)
-        pokemonHeight = JSON.stringify(height)
+        pokemonWeightEl = JSON.stringify(weight)
+        pokemonHeightEl = JSON.stringify(height)
         displayData(search)
     })
 }
 
 function displayData(search) {
-    document.querySelector("#name").innerText = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)
-    document.querySelector("#type").innerText = "Type: " + type.charAt(0).toUpperCase() + type.slice(1)
-    document.querySelector("#ability1").innerText = ability1.charAt(0).toUpperCase() + ability1.slice(1)
-    document.querySelector("#ability2").innerText = ability2.charAt(0).toUpperCase() + ability2.slice(1)
-    document.querySelector("#move1").innerText = move1.charAt(0).toUpperCase() + move1.slice(1)
-    document.querySelector("#move2").innerText = move2.charAt(0).toUpperCase() + move2.slice(1)
-    document.querySelector("#move3").innerText = move3.charAt(0).toUpperCase() + move3.slice(1)
-    document.querySelector("#move4").innerText = move4.charAt(0).toUpperCase() + move4.slice(1)
+    document.querySelector("#name").innerText = pokemonNameEl.charAt(0).toUpperCase() + pokemonNameEl.slice(1)
+    document.querySelector("#type").innerText = "TypeEl: " + typeEl.charAt(0).toUpperCase() + typeEl.slice(1)
+    document.querySelector("#ability1").innerText = ability1El.charAt(0).toUpperCase() + ability1El.slice(1)
+    document.querySelector("#ability2").innerText = ability2El.charAt(0).toUpperCase() + ability2El.slice(1)
+    document.querySelector("#move1").innerText = move1El.charAt(0).toUpperCase() + move1El.slice(1)
+    document.querySelector("#move2").innerText = move2El.charAt(0).toUpperCase() + move2El.slice(1)
+    document.querySelector("#move3").innerText = move3El.charAt(0).toUpperCase() + move3El.slice(1)
+    document.querySelector("#move4").innerText = move4El.charAt(0).toUpperCase() + move4El.slice(1)
     document.querySelector("#height").innerText = "Height: " + height
     document.querySelector("#weight").innerText = "Weight: " + weight
 }
@@ -70,8 +70,8 @@ function userHistory(search) {
 
 function arrayToHistory(search) {
     localHistoryEl.innerHTML = ""
-    let test = JSON.parse(localStorage.getItem("localHistory"))
-    let recentArray = test.reverse()
+    let storedArray = JSON.parse(localStorage.getItem("localHistory"))
+    let recentArray = storedArray.reverse()
 
     for (let i = 0; i < 5; i++) {
         let recentEl = document.createElement("p")
@@ -90,7 +90,7 @@ function removeSpace(nameSpacing) {
 function run(searchName) {
     getData(searchName)
     arrayToHistory(searchName)
-    // getVideo(searchName)
+    getVideo(searchName)
 }
 
 localHistoryEl.addEventListener("click", function(event) {
@@ -102,9 +102,8 @@ localHistoryEl.addEventListener("click", function(event) {
     run(name)
 })
 
-button.addEventListener("click", function() {
-    let search = searchInput.value
-    console.log("search button click")
+buttonEl.addEventListener("click", function() {
+    let search = searchInputEl.value
     let name = removeSpace(search)
 
     userHistory(name)
