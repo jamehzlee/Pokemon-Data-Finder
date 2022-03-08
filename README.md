@@ -1,4 +1,4 @@
-<h1><a href="https://jamehzlee.github.io/Project-1-Group-2/">Pokemon Data Finder<a></h1>
+<h1><a href="https://jamehzlee.github.io/Pokemon-Data-Finder/">Pokemon Data Finder<a></h1>
 
 ## Description
 
