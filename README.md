@@ -1,4 +1,7 @@
 <h1><a href="https://jamehzlee.github.io/Pokemon-Data-Finder/">Pokemon Data Finder<a></h1>
+  
+# Co-Creators:
+<h1><a href="https://github.com/dyl-17">Dylan<a> and <a href="https://github.com/NickBroglio">Nick<a></h1>
 
 ## Description
 
